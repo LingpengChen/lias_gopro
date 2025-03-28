@@ -1,0 +1,21 @@
+camera:
+  # USB连接的相机IP (需要根据实际相机序列号修改)
+  ip: "172.28.197.51"
+  
+  # Webcam设置
+  webcam:
+    resolution: 12  # 1080p
+    fov: 0         # Wide
+    protocol: "TS"
+    port: 8554
+
+  # Hypersmooth设置
+  hypersmooth:
+    enabled: false  # 关闭Hypersmooth
+    option: 0      # 0: Off
+
+  # 窗口设置
+  window:
+    name: "GoPro Webcam"
+    width: 1920
+    height: 1080
