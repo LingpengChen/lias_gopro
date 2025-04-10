@@ -1,0 +1,14 @@
+FOLDER=/home/clp/workspace/lias_gopro/data
+xhost +local:root
+docker run -it -e "DISPLAY" -e "QT_X11_NO_MITSHM=1" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v "$FOLDER:/data" kalibr
+
+source /catkin_ws/devel/setup.bash
+rosrun kalibr kalibr_calibrate_cameras --bag /data/cam_april.bag --target /data/april_6x6.yaml --models pinhole-radtan pinhole-radtan --topics /cam0/image_raw /cam1/image_raw
+
+
+ffprobe -v quiet -select_streams v:0 -show_entries frame=pts_time  -of csv=p=0  gopro.mp4  
+
+rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml  --bag /data/gopro_bag/video1/gopro_with_imu_compressed.bag   --models pinhole-fov --topics  /camera/image_raw/compressed
+data/gopro_bag/video1/gopro_with_imu_compressed.bag
+
+rosrun kalibr kalibr_calibrate_imu_camera --target /data/tag36h11_6x6.yaml --bag /data/gopro_bag/video1/gopro_with_imu_compressed.bag --cam /data/calibration_result/gopro_with_imu_compressed-camchain.yaml --imu /data/imu.yaml --topics /imu/data 

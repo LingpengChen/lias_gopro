@@ -1,0 +1,1 @@
+   MainThread:23:38:40.379 gopro.py                                  449 ERROR    | Caught unknown message: Task was destroyed but it is pending! from <_UnixSelectorEventLoop running=True closed=False debug=False>

@@ -1,0 +1,103 @@
+# GoPro Webcam 完整配置文件
+
+camera:
+  # USB连接的相机IP
+  # 格式: 172.2X.1YZ.51
+  # X: 序列号倒数第3位
+  # Y: 序列号倒数第2位
+  # Z: 序列号倒数第1位
+  # 例如序列号C3321000987654，IP应该是172.26.54.51
+  ip: "172.28.197.51"
+
+  
+  # Webcam相关设置
+  webcam:
+    # 分辨率设置
+    # 可选值:
+    # 4:  480p  (支持: Hero 10 Black, Hero 9 Black)
+    # 7:  720p  (支持: Hero 12/11/10/9 Black)
+    # 12: 1080p (支持: Hero 12/11/10/9 Black) 
+    resolution: 4
+
+    # 视场角设置
+    # 可选值:
+    # 0: Wide      (广角)
+    # 2: Narrow    (窄角)
+    # 3: Superview (超广角)
+    # 4: Linear    (线性)
+    # 支持机型: Hero 12/11/10/9 Black
+    fov: 4
+
+    # 传输协议设置
+    # 可选值:
+    # "TS":   Transport Stream (UDP传输)
+    # "RTSP": RTSP流 (如果相机支持)
+    protocol: "TS"
+
+    # 端口设置
+    # 默认值: 8554
+    # 可以根据需要修改，注意避免与其他服务冲突
+    port: 8554
+
+  # Hypersmooth稳定设置
+  hypersmooth:
+    # 是否启用Hypersmooth
+    enabled: false
+    
+    # Hypersmooth选项
+    # 可选值:
+    # 0:   Off         (关闭)
+    # 1:   Low         (低强度稳定，推荐用于Webcam)
+    # 2:   High        (高强度稳定)
+    # 3:   Boost       (增强稳定)
+    # 4:   Auto Boost  (自动增强)
+    # 100: Standard    (标准稳定)
+    option: 0
+
+  # 预览窗口设置
+  window:
+    # 窗口标题
+    name: "GoPro Webcam"
+    
+    # 窗口尺寸
+    # 根据分辨率设置对应的尺寸
+    # 480p:  width: 848,  height: 480
+    # 720p:  width: 1280, height: 720
+    # 1080p: width: 1920, height: 1080
+    width: 848
+    height: 480
+
+  # 视频流设置
+  stream:
+    # 缓冲区大小
+    # 较小的值可能导致延迟更低但可能丢帧
+    # 较大的值可能导致延迟增加但画面更稳定
+    buffer_size: 1
+
+    # 帧率限制 (如果需要)
+    # 0表示不限制
+    fps_limit: 0
+
+  # 高级设置
+  advanced:
+    # HTTP请求超时时间(秒)
+    request_timeout: 5.0
+    
+    # 初始化延迟时间(秒)
+    init_delay: 1.0
+    
+    # 重试设置
+    max_retries: 3
+    retry_delay: 1.0
+
+  # 调试设置
+  debug:
+    # 是否启用调试日志
+    enabled: false
+    
+    # 日志级别
+    # 可选值: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    level: "INFO"
+    
+    # 是否显示性能统计
+    show_stats: false

@@ -1,0 +1,7 @@
+target_type: 'aprilgrid'      # 标定板类型：AprilGrid
+tagCols: 6                    # 标定板横向tag数量
+tagRows: 6                    # 标定板纵向tag数量
+tagSize: 0.0352              # tag大小，单位是米
+tagSpacing: 0.3              # tag间距系数（间距/tag大小）=1.056/3.52=0.3  #ratio of space between tags to tagSize
+startId: 0                   # 起始ID
+endId: 35                    # 结束ID
