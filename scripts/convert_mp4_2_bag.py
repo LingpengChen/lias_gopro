@@ -20,7 +20,7 @@ if __name__ == "__main__":
     except rospy.exceptions.ROSException:
         pass
     
-    root_dir = "/home/clp/workspace/lias_gopro/data/video1/"
+    root_dir = "/home/clp/workspace/lias_gopro/data/video3/"
     
     video_path = root_dir + "gopro.mp4"
     frame_timestamps_path = root_dir+ "gopro_frame_timestamp.npy"
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         imu_data_path=imu_data_path,
         output_bag_path=output_bag_path,
         frame_rate=10,  # 降低帧率
-        scale_factor=0.5  # 图像尺寸减半
+        scale_factor=1  # 图像尺寸减半
     )
     
     converter.convert()

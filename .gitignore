@@ -2,3 +2,7 @@ data/video/*
 data/video1/*
 data/video2/*
 data/for_imu/imu.bag
+data/kalibr_images
+data/kalibrland_images
+data
+scripts/utils/__pycache__

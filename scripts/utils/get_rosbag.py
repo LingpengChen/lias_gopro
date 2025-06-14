@@ -191,7 +191,7 @@ if __name__ == "__main__":
         imu_data_path=root_dir + "imu_data.npy",
         output_bag_path=root_dir + "gopro.bag",
         frame_rate=10,  # 降低帧率
-        scale_factor=0.5  # 图像尺寸减半
+        scale_factor=1  # 图像尺寸减半
     )
     
     # converter.convert()

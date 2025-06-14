@@ -12,3 +12,20 @@ rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml  --bag /
 data/gopro_bag/video1/gopro_with_imu_compressed.bag
 
 rosrun kalibr kalibr_calibrate_imu_camera --target /data/tag36h11_6x6.yaml --bag /data/gopro_bag/video1/gopro_with_imu_compressed.bag --cam /data/calibration_result/gopro_with_imu_compressed-camchain.yaml --imu /data/imu.yaml --topics /imu/data 
+
+
+rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml  --bag /data/video1/gopro.bag   --models pinhole-fov --topics  /camera/image_raw/compressed
+rosrun kalibr kalibr_calibrate_imu_camera --target /data/tag36h11_6x6.yaml --bag /data/video1/gopro.bag --cam /data/cam_calibration_result/gopro-camchain.yaml --imu /data/imu_calibration_result/imu.yaml  --timeoffset-padding 0.1
+
+
+rosrun kalibr kalibr_bagextractor --bag /data/video3/gopro.bag --image-topics /camera/image_raw/compressed --output-folder /data/kalibr_images
+
+rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml  --bag /data/video3/gopro.bag   --models pinhole-fov --topics  /camera/image_raw/compressed
+rosrun kalibr kalibr_calibrate_imu_camera --target /data/tag36h11_6x6.yaml --bag /data/video2/gopro.bag --cam /data/underwater/cam_calibration_result/gopro-camchain.yaml --imu /data/imu_calibration_result/imu.yaml  --timeoffset-padding 0.1
+
+rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml --bag /data/video3/gopro.bag   --models pinhole-radtan  --topics /camera/image_raw/compressed  --verbose
+
+# rosbag filter gopro.bag gopro_filtered.bag "t.to_sec() > 16.0 and t.to_sec() < 50.0"
+rosbag filter gopro.bag gopro_filtered.bag "t.to_sec() > 16.0"
+
+rosrun kalibr kalibr_calibrate_cameras --target /data/tag36h11_6x6.yaml --bag /data/video3/gopro_filtered.bag   --models pinhole-radtan  --topics /camera/image_raw/compressed  --verbose
